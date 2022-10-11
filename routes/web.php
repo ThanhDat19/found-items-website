@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/posts/{category_slug}', [FrontendController::class, 'viewCategoryPost']);
 Route::get('/posts/{category_slug}/{post_slug}', [FrontendController::class, 'viewPost']);
 
+#Comment System
+Route::post('comments', [CommentController::class, 'store']);
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('admin')->group(function () {

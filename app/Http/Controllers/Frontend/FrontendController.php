@@ -21,7 +21,7 @@ class FrontendController extends Controller
     {
         $category = Category::where([
             'slug' => $category_slug,
-            'active' => '1'
+            'active' => '1',
         ])->first();
 
         $latest_posts=Post::where([
@@ -31,7 +31,8 @@ class FrontendController extends Controller
         if ($category) {
             $posts = Post::where([
                 'category_id' => $category->id,
-                'active' => '1'
+                'active' => '1',
+
             ])->paginate(3);
 
             return view('frontend.post.index', [
@@ -47,14 +48,15 @@ class FrontendController extends Controller
     public function viewPost($category_slug, $post_slug){
         $category = Category::where([
             'slug' => $category_slug,
-            'active' => '1'
+            'active' => '1',
         ])->first();
 
         if ($category) {
             $post = Post::where([
                 'category_id' => $category->id,
                 'slug' => $post_slug,
-                'active' => '1'
+                'active' => '1',
+
             ])->first();
 
             return view('frontend.post.view', [
