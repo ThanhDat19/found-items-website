@@ -33,7 +33,14 @@
                   </form>
               </div>
           </li>
-
+          @if (Route::has('login'))
+              <div class="nav-item">
+                  @auth
+                      <a href="{{ url('/') }}"
+                          class=" nav-link text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                  @endauth
+              </div>
+          @endif
       </ul>
   </nav>
   <!-- /.navbar -->

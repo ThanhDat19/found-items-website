@@ -16,17 +16,18 @@
             <div class="col-md-4 pl-4">
                 <h5 class="font-weight-bold spanborder"><span>Tin Mới Nhất</span></h5>
                 <ol class="list-featured">
-                    {{-- <li>
+                    @foreach ($latest_posts as $post)
+                    <li>
                         <span>
                             <h6 class="font-weight-bold">
-                                <a href="./article.html" class="text-dark">Did Supernovae Kill Off Large Ocean
-                                    Animals?</a>
+                                <a href="/posts/{{$post->category->slug}}/{{$post->slug}}" class="text-dark">{{$post->name}}</a>
                             </h6>
                             <p class="text-muted">
-                                Jake Bittle in SCIENCE
+                                {{$post->description}}
                             </p>
                         </span>
-                    </li> --}}
+                    </li>
+                    @endforeach
                 </ol>
             </div>
         </div>

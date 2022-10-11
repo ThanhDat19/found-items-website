@@ -6,13 +6,9 @@
             <div class="pl-4 pr-0 h-100 tofront">
                 <div class="row justify-content-between">
                     <div class="col-md-6 pt-6 pb-6 align-self-center">
-                        <h1 class="secondfont mb-3 font-weight-bold">Mundana is an HTML Bootstrap Template for
-                            Professional
-                            Blogging</h1>
+                        <h1 class="secondfont mb-3 font-weight-bold">Web Development Blogging</h1>
                         <p class="mb-3">
-                            Beautifully crafted with the latest technologies, SASS & Bootstrap 4.1.3, Mundana is the
-                            perfect
-                            design for your professional blog. Homepage, post article and category layouts available.
+                            I wana to a fullstack web development. Besides, I really like to carry you good things
                         </p>
                         <a href="./article.html" class="btn btn-dark">Read More</a>
                     </div>
