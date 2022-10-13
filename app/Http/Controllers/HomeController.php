@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $latest_posts=Post::where([
+            'active' => '1',
+        ])->orderByDesc('created_at')->take(3)->get();
+        return view('frontend.index', ['latest_posts' => $latest_posts]);
     }
 }

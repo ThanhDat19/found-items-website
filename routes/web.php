@@ -19,6 +19,7 @@ Route::get('/posts/{category_slug}/{post_slug}', [FrontendController::class, 'vi
 
 #Comment System
 Route::post('comments', [CommentController::class, 'store']);
+Route::delete('/posts/{category_slug}/{post_slug}/comments/destroy', [CommentController::class, 'destroy']);
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('admin')->group(function () {

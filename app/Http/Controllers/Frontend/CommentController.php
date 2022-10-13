@@ -39,4 +39,30 @@ class CommentController extends Controller
             return redirect()->back()->with('message', 'Đăng nhập để bình luận');
         }
     }
+
+
+    public function destroy(Request $request)
+    {
+        if (Auth::check()) {
+            $commet = Comment::where('id', $request->input('id'))->first();
+            $result = false;
+            if ($commet) {
+                $commet->delete();
+                $result = true;
+            }
+
+            if ($result) {
+                return response()->json([
+                    'error' => false,
+                    'message' => 'Xóa bình luận thành công'
+                ]);
+            }
+            return response()->json(['error' => true]);
+        } else {
+            return response()->json([
+                'error' => true,
+                'message' => 'Đăng nhập để xóa'
+            ]);
+        }
+    }
 }

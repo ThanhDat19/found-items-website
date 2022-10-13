@@ -84,10 +84,15 @@
                         </p>
                     </div>
 
+                    @if (Auth::user()->id == $item->user->id)
                     <div>
-                        <a href="" class="btn btn-primary btn-sm me-2">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm me-2">Delete</a>
+                        {{-- <a href="#" onclick="removeRow({{$item->id}},'comments/destroy')"
+                        class="btn btn-primary btn-sm me-2">Edit</a> --}}
+                        <a href="#" onclick="removeRow({{$item->id}},'{{$post->slug}}/comments/destroy')"
+                        class="btn btn-danger btn-sm me-2">Delete</a>
                     </div>
+                    @endif
+
                 </div>
             @endforeach
         </div>
