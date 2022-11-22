@@ -13,6 +13,7 @@ class CommentController extends Controller
 {
     public function store(Request $request)
     {
+
         if (Auth::check()) {
             $validator = Validator::make($request->all(), [
                 'comment_body' => 'required|string'

@@ -1,4 +1,4 @@
-  <!-- Navbar -->
+  {{-- <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
@@ -27,20 +27,14 @@
                              document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
                   </a>
-
+                  <a class="dropdown-item" href="/profile/edit/{{ Auth::user()->id }}">
+                      Thông tin cá nhân
+                  </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
               </div>
           </li>
-          @if (Route::has('login'))
-              <div class="nav-item">
-                  @auth
-                      <a href="{{ url('/') }}"
-                          class=" nav-link text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                  @endauth
-              </div>
-          @endif
       </ul>
   </nav>
-  <!-- /.navbar -->
+  <!-- /.navbar --> --}}

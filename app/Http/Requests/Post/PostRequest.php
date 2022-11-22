@@ -25,7 +25,10 @@ class PostRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'image' => 'required'
+            'description' => 'required',
+            'content' => 'required',
+            'image' => 'required',
+            'image_validate' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
         ];
     }
 
@@ -34,6 +37,11 @@ class PostRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên bài đăng',
             'image.required' => 'Ảnh không được để trống',
+            'description.required' => 'Miêu tả không được để trống',
+            'content.required' => 'Miêu tả chi tiết không được để trống',
+            'image_validate.max' => 'Kích thước ảnh quá lớn phải không được quá 2M',
+            'image_validate.image' => 'File không thuộc định dạng hình ảnh',
+            'image_validate.mimes' => 'File không thuộc jpeg,jpg,png',
         ];
     }
 }

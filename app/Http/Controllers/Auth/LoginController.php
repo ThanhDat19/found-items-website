@@ -30,16 +30,15 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     public function authenticated()
     {
-        if(Auth::user()->role == '1')
-        {
+        if (Auth::user()->role == '1' || Auth::user()->role == '2') {
             return redirect('admin/main')->with('status', 'Chào mừng quản trị viên!');
-        }
-        else if (Auth::user()->role == '0')
-        {
+        } else if (Auth::user()->role == '0') {
+            if (Auth::user()->status == '0') {
+                Auth::logout();
+                return  redirect('/login')->with('status', 'Tài khoản chưa được kích hoạt!');
+            }
             return redirect('/home')->with('status', 'Đăng nhập thành công!');
-        }
-        else
-        {
+        } else {
             return redirect('/');
         }
     }

@@ -27,6 +27,6 @@ class HomeController extends Controller
         $latest_posts=Post::where([
             'active' => '1',
         ])->orderByDesc('created_at')->take(3)->get();
-        return view('frontend.index', ['latest_posts' => $latest_posts]);
+        return view('frontend.home', ['latest_posts' => $latest_posts]);
     }
 }

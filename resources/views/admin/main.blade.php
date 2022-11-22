@@ -2,16 +2,18 @@
 <html lang="en">
 
 <head>
-    @include('admin.header');
+    @include('admin.header')
     <style>
-        .dataTables_length label{
+        .dataTables_length label {
             margin: 10px 10px;
         }
-        .dataTables_length label select{
+
+        .dataTables_length label select {
             border-radius: 5px !important;
             padding: 0 5px;
             margin: 0 4px;
         }
+
         .dataTables_filter {
             float: right;
         }
@@ -24,7 +26,7 @@
     </style>
 </head>
 
-<body class="hold-transition sidebar-mini">
+{{-- <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         @include('admin.partials.nav')
         <!-- Content Wrapper. Contains page content -->
@@ -65,6 +67,28 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
+    @include('admin.footer')
+</body> --}}
+
+
+<body>
+    {{-- <script src="{{ asset('template/assets/js/initTheme.js') }}"></script> --}}
+    <div id="app">
+        @include('admin.partials.side')
+        <div id="main">
+            @include('admin.alert')
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <h3>{{ $title }}</h3>
+                @yield('contents')
+            </div>
+        </div>
+    </div>
     @include('admin.footer');
 </body>
 

@@ -5,25 +5,80 @@ $.ajaxSetup({
 });
 
 function removeRow(id, url) {
-    if (confirm('Xóa không thể khôi phục! Bạn có chắc muốn xóa?')) {
-        $.ajax({
-            type: 'DELETE',
-            datatype: 'JASON',
-            data: { id },
-            url: url,
-            success: function (result) {
-                if (result.error == false) {
-                    alert(result.message)
-                    location.reload()
-                }
-                else {
-                    alert('Xóa lỗi vui lòng thử lại')
-                }
+    swal({
+        title: "Bạn có chắc muốn xóa?",
+        text: "Nếu xóa, dữ liệu không thể khôi phục!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: 'DELETE',
+                    datatype: 'JASON',
+                    data: { id },
+                    url: url,
+                    success: function (result) {
+                        if (result.error == false) {
+                            swal(result.message)
+                            .then(() => {
+                                location.reload(true);
+                                tr.hide();
+                            });
+                        }
+                        else {
+                            swal("Xóa lỗi vui lòng Thử lại", {
+                                icon: "warning",
+                            })
+                            .then(() => {
+                                location.reload(true);
+                                tr.hide();
+                            });
+                        }
+                    }
+                })
+
+            } else {
+                swal("Dữ liệu của bạn đã an toàn!");
             }
         })
-    }
 }
 
+function followPost(user, post, url) {
+    $.ajax({
+        type: "POST",
+        data: { user, post },
+        url: url,
+        success: function (result) {
+            if (result.error == false) {
+                swal({
+                    title: "Thông báo!",
+                    text: result.message,
+                    type: "success",
+                    timer: 3000
+                })
+                .then(() => {
+                    location.reload(true);
+                    tr.hide();
+                });
+
+            }
+            else {
+                swal({
+                    title: "Thông báo!",
+                    text: "Đã có lỗi xảy ra",
+                    type: "error",
+                    timer: 3000
+                })
+                .then(() => {
+                    location.reload(true);
+                    tr.hide();
+                });
+            }
+        }
+    });
+}
 // Upload file
 $('#upload').change(function () {
     const form = new FormData();
@@ -34,7 +89,7 @@ $('#upload').change(function () {
         type: 'POST',
         datatype: 'JSON',
         data: form,
-        url: '/admin/upload/services',
+        url: '/upload/services',
         success: function (results) {
             if (results.error == false) {
                 $('#image_show').html('<a href="' + results.url + '" target="_blank"><img src="' + results.url + '" width="150px"></a>')

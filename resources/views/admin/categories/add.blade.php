@@ -1,6 +1,5 @@
 @extends('admin.main')
 @section('head')
-    <script src="/ckeditor/ckeditor.js"></script>
 @endsection
 @section('contents')
     <form action="" method="post">
@@ -42,7 +41,5 @@
     </form>
 @endsection
 @section('footer')
-    <script>
-        CKEDITOR.replace('content');
-    </script>
+
 @endsection

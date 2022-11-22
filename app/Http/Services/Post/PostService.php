@@ -5,6 +5,8 @@ namespace App\Http\Services\Post;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostFollow;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class PostService
@@ -23,20 +25,22 @@ class PostService
     public function insert($request)
     {
         try {
+            $request->except('_token');
+            Post::create([
+                "name" => $request->input('name'),
+                "category_id" => $request->input('category_id'),
+                "description" => $request->input('description'),
+                "content" => $request->input('content'),
+                "image" => $request->input('image'),
+                "slug" => Str::slug($request->input('name'), '-'),
+                "author" => Auth::user()->id
+            ]);
+            Session::flash('success', 'Thêm bài đăng mới thành công');
         } catch (\Exception $err) {
             \Log::info($err->getMessage());
             return false;
         }
-        $request->except('_token');
-        Post::create([
-            "name" => $request->input('name'),
-            "category_id" => $request->input('category_id'),
-            "description" => $request->input('description'),
-            "content" => $request->input('content'),
-            "image" => $request->input('image'),
-            "slug" => Str::slug($request->input('name'), '-')
-        ]);
-        Session::flash('success', 'Thêm bài đăng mới thành công');
+
         return true;
     }
 
@@ -64,6 +68,17 @@ class PostService
     public function delete($request)
     {
         $post = Post::where('id', $request->input('id'))->first();
+
+        if ($post) {
+            $post->delete();
+            return true;
+        }
+        return false;
+    }
+
+    public function deleteFollowPost($request)
+    {
+        $post = PostFollow::where('id', $request->input('id'))->first();
 
         if ($post) {
             $post->delete();

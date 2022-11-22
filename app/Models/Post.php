@@ -19,7 +19,8 @@ class Post extends Model
         'slug',
         'description',
         'content',
-        'image'
+        'image',
+        'author'
     ];
 
     public function category(){
@@ -28,5 +29,28 @@ class Post extends Model
 
     public function comments(){
         return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'author', 'id');
+    }
+    public function follow(){
+        return $this->belongsTo(PostFollow::class, 'id', 'post_id');
+    }
+
+    public function sumFollowPostByPost($id){
+        $count = PostFollow::where('post_id', $id)->count();// số lượng follow của 1 bài đăng
+        return $count;
+    }
+
+    public function followByUser($id, $post){
+        $follow = PostFollow::where([
+            'user_id'=> $id,
+            'post_id'=> $post
+        ])->first();
+        if(empty($follow)){
+            return true;
+        }
+        return false;
     }
 }

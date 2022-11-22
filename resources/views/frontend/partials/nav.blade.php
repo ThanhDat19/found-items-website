@@ -1,64 +1,56 @@
-    <!--------------------------------------
-    NAVBAR
-    --------------------------------------->
-    <nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+
+    <nav class="menu">
         <div class="container">
-            <a class="navbar-brand" href="/"><strong>Company</strong></a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navbarColor02" style="">
-                <ul class="navbar-nav mr-auto d-flex align-items-center">
+            <div class="brand">
+                <a href="#">
+                    <h4>Company</h4>
+                </a>
+            </div>
+            <div class="mobile-toggle">
+                <a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round"></i></a>
+            </div>
+            <div class="mobile-toggle">
+                <a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>
+            </div>
+            <div id="menu-list">
+                <ul class="nav-list">
+                    <li class="for-tablet nav-title"><a>Menu</a></li>
+                    <li class="for-tablet"><a href="login.html">Login</a></li>
+                    <li class="for-tablet"><a href="register.html">Register</a></li>
+
                     @php
                         $categories = App\Models\Category::where('active', 1)
                             ->orderByDesc('id')
                             ->get();
                     @endphp
                     @foreach ($categories as $category)
-                        <li class="nav-item">
-                            <a class="nav-link" href="/posts/{{ $category->slug }}">{{ $category->name }}</a>
+                        <li>
+                            <a href="/posts/{{ $category->slug }}">{{ $category->name }}<i class="ion-ios-arrow-right"></i></a>
                         </li>
                     @endforeach
-
                     @if (Auth::user())
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
+                    <li class="dropdown magz-dropdown">
+                        <a id="navbarDropdown"  href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endif
-
+                                {{ __('Logout') }}
+                            </a>
+                            <a class="dropdown-item" href="/profile/edit/{{ Auth::user()->id }}">
+                                Thông tin cá nhân
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endif
                 </ul>
-                @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-
-                    @else
-                        <a href="{{ route('login') }}"
-                            class="text-sm text-gray-700 dark:text-gray-500 underline">Đăng nhập</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Đăng ký</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
             </div>
         </div>
     </nav>
-    <!-- End Navbar -->

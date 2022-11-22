@@ -1,17 +1,21 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!DOCTYPE html>
+<html lang="en">
 @include('layouts.head')
+<style>
+    *{
+        font-family: sans-serif;
+    }
+</style>
 
 <body>
-    <div id="app">
+    {{-- Header --}}
+    <header class="primary" style="top: 0px;">
+        @include('frontend.partials.header')
         @include('frontend.partials.nav')
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
+    </header>
+    {{-- Home --}}
+    @yield('content')
+    @include('frontend.partials.footer')
     @include('layouts.footer')
 </body>
 

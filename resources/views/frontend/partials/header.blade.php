@@ -1,21 +1,50 @@
-    <!--------------------------------------
-        HEADER
-        --------------------------------------->
-    <div class="container">
-        <div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
-            <div class="pl-4 pr-0 h-100 tofront">
-                <div class="row justify-content-between">
-                    <div class="col-md-6 pt-6 pb-6 align-self-center">
-                        <h1 class="secondfont mb-3 font-weight-bold">Web Development Blogging</h1>
-                        <p class="mb-3">
-                            I wana to a fullstack web development. Besides, I really like to carry you good things
-                        </p>
-                        <a href="./article.html" class="btn btn-dark">Read More</a>
+
+    <div class="firstbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="brand">
+                        <a href="/">
+                            <h4>Company</h4>
+                        </a>
                     </div>
-                    <div class="col-md-6 d-none d-md-block pr-0"
-                        style="background-size:cover;background-image:url(/template/images/blog-02.jpg);"> </div>
                 </div>
+                <div class="col-md-6 col-sm-12">
+                    <form class="search" autocomplete="off">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control"
+                                    placeholder="Type something here">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary"><i class="ion-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                @if (Route::has('login'))
+                    <div class="col-md-3 col-sm-12 text-right">
+                        <ul class="nav-icons">
+                            @auth
+                            @else
+                                <li>
+                                    <a href="{{ route('login') }}"><i class="ion-person"></i>
+                                        <div>Đăng nhập</div>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}"><i class="ion-person-add"></i>
+                                            <div>Đăng ký</div>
+                                        </a>
+                                    @endif
+                                </li>
+                            @endauth
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
-    <!-- End Header -->

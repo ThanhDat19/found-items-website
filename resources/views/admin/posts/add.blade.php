@@ -1,6 +1,5 @@
 @extends('admin.main')
 @section('head')
-    <script src="/ckeditor/ckeditor.js"></script>
 @endsection
 @section('contents')
     <form action="" method="post" enctype="multipart/form-data">
@@ -35,7 +34,7 @@
 
             <div class="form-group">
                 <label for="">Ảnh bài đăng</label>
-                <input type="file" class="form-control" id="upload">
+                <input type="file"  name="image_validate" class="form-control" id="upload">
                 <div id="image_show">
 
                 </div>
@@ -62,7 +61,5 @@
     </form>
 @endsection
 @section('footer')
-    <script>
-        CKEDITOR.replace('content');
-    </script>
+
 @endsection
