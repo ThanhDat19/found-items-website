@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="home first" style="padding-top: 217px;">
+<section class="home first" style="padding-top: 100px;">
     <div class="container">
         <div class="row justify-content-center">
             @include('admin.alert')

@@ -53,4 +53,8 @@ class Post extends Model
         }
         return false;
     }
+
+    public function report(){
+        return $this->hasMany(Report::class, 'post_id', 'id');
+    }
 }

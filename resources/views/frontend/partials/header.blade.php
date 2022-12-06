@@ -5,16 +5,17 @@
                 <div class="col-md-3 col-sm-12">
                     <div class="brand">
                         <a href="/">
-                            <h4>Company</h4>
+                            <h4>KDV Tìm ĐỒ</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <form class="search" autocomplete="off">
+                    <form class="search" action="{{ route('search') }}">
+                        @csrf
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" name="q" class="form-control"
-                                    placeholder="Type something here">
+                                <input type="text" name="search" id="search" class="form-control"
+                                    placeholder="Tìm kiếm...">
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary"><i class="ion-search"></i></button>
                                 </div>

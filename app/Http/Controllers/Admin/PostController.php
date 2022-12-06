@@ -7,9 +7,12 @@ use App\Http\Requests\Post\PostRequest;
 use App\Http\Services\Category\CategoryService;
 use App\Http\Services\Post\PostService;
 use App\Models\Post;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Models\PostFollow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Laravel\Ui\Presets\React;
 
 class PostController extends Controller
 {
@@ -143,5 +146,28 @@ class PostController extends Controller
                 'message' => 'Đã có lỗi xảy ra'
             ]);
         }
+    }
+
+    public function allow(Request $request)
+    {
+        try {
+            $post = Post::find($request->id);
+            $post->active = 1;
+            $post->save();
+        } catch (\Exception $error) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Duyệt bài thất bại'
+            ]);
+        }
+        return response()->json([
+            'error' => false,
+            'message' => 'Duyệt bài thành công'
+        ]);
+    }
+
+    public function viewPost(Post $post)
+    {
+        return view('admin.posts.view', ['post' => $post, 'title' => 'Xem Bài Đăng',]);
     }
 }

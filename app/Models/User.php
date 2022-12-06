@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'avatar',
+        'role',
         'status',
         'token'
     ];
@@ -46,4 +47,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function posts(){
+        return $this->hasMany(Post::class, 'author', 'id');
+    }
+
+    public function postsFollow(){
+        return $this->hasMany(PostFollow::class, 'id', 'user_id');
+    }
 }

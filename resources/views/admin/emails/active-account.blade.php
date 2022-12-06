@@ -5,7 +5,7 @@
         <p>Để có thể tiếp tục sử dụng tài khoản và đăng nhập vào hệ thống, Bạn vui lòng nhấn nút kích hoạt tài khoản bên
             dưới!
         </p>
-        <a href="http://127.0.0.1:8000/auth/active-account/{{ $user->id }}/{{ $user->token }}"
+        <a href="{{ route('active-account', ['user' => $user->id, 'token' => $user->token]) }}"
             style="display: inline-block; background:green; color: #fff; padding: 7px 25px; boder-radius: 4px; font-weight:bold">Kích hoạt
             tài khoản
         </a>

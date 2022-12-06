@@ -41,7 +41,7 @@
                 <input type="hidden" name="image" id="image">
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <div class="custom-control custom-radio">
                     <input class="custom-control-input" type="radio" name="active" id="active" value="1"
                         checked="" id="active">
@@ -51,7 +51,7 @@
                     <input class="custom-control-input" type="radio" name="active" id="non_active" value="0">
                     <label class="custom-control-label"for="non_active">Không</label>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- /.card-body -->
 

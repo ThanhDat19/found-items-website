@@ -44,7 +44,45 @@ function removeRow(id, url) {
             }
         })
 }
+function allowPost(id, url) {
+    swal({
+        title: "Bạn Muốn Duyệt Bài?",
+        text: "Hãy kiểm tra kỹ thao tác!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: 'POST',
+                    data: { id },
+                    url: url,
+                    success: function (result) {
+                        if (result.error == false) {
+                            swal(result.message)
+                            .then(() => {
+                                location.reload(true);
+                                tr.hide();
+                            });
+                        }
+                        else {
+                            swal("Lỗi vui lòng Thử lại", {
+                                icon: "warning",
+                            })
+                            .then(() => {
+                                location.reload(true);
+                                tr.hide();
+                            });
+                        }
+                    }
+                })
 
+            } else {
+                swal("Bạn đã hủy thao tác!");
+            }
+        })
+}
 function followPost(user, post, url) {
     $.ajax({
         type: "POST",

@@ -2,13 +2,13 @@
 
 
 @section('content')
-    <section class="single first" style="padding-top: 218px;">
+    <section class="single first" style="padding-top: 100px;">
         <div class="container">
             @include('admin.alert')
             <div class="row">
                 <div class="col-md-4 sidebar" id="sidebar">
                     <aside>
-                        <h1 class="aside-title">Tin Mới</h1>
+                        <h1 class="aside-title"></h1>
                         <div class="aside-body">
                             <div class="line"></div>
                             {{-- <article class="article-mini">
@@ -65,9 +65,12 @@
                             </div>
 
                             {{-- Follow --}}
+                            {{-- Report --}}
                             @if (Auth::check())
+                                <a href="{{ route('report', ['post' => $post->id, 'category_slug' => $post->category->slug, 'post_slug' => $post->slug]) }}" style="margin-top: 0; float: right;"
+                                    class="btn btn-danger rounded-pill ml-4">Tố cáo</a>
                                 @if (!$post->followByUser(Auth::user()->id, $post->id))
-                                    <a href="#"class="love active"  style="margin-top: 0; float: right;">
+                                    <a href="#"class="love active" style="margin-top: 0; float: right;">
                                         <i class="ion-android-favorite">
                                         </i>
                                         <div>{{ $post->sumFollowPostByPost($post->id) }}</div>
@@ -105,7 +108,9 @@
                     </div>
                     <div class="author">
                         <figure>
-                            <img src="{{ $post->user->avatar }}">
+                            <a href="/author/{{ $post->user->id }}">
+                                <img src="{{ $post->user->avatar }}">
+                            </a>
                         </figure>
                         <div class="details">
                             @if ($post->user->role == 1 || $post->user->role == 2)
@@ -120,23 +125,35 @@
                     <div class="line">
                         <div>Bài Đăng Liên Quan</div>
                     </div>
+                    @php
+                        $postsRelation = App\Models\Post::where([['category_id', '=', $post->category->id], ['id', '<>', $post->id]])
+                            ->take(2)
+                            ->get();
+                    @endphp
                     <div class="row">
-                        {{-- <article class="article related col-md-6 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <figure>
-                                    <a href="#">
-                                        <img src="images/news/img08.jpg">
-                                    </a>
-                                </figure>
-                                <div class="padding">
-                                    <h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-                                    <div class="detail">
-                                        <div class="category"><a href="category.html">Lifestyle</a></div>
-                                        <div class="time">December 26, 2016</div>
+                        @foreach ($postsRelation as $item)
+                            <article class="article related col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    <figure>
+                                        <a href="/posts/{{ $item->category->slug }}/{{ $item->slug }}">
+                                            <img src="{{ $item->image }}"
+                                                style="width:400px; height:200px;object-fit: cover">
+                                        </a>
+                                    </figure>
+                                    <div class="padding">
+                                        <h2><a
+                                                href="/posts/{{ $item->category->slug }}/{{ $item->slug }}">{{ $item->description }}</a>
+                                        </h2>
+                                        <div class="detail">
+                                            <div class="category"><a
+                                                    href="/posts/{{ $item->category->slug }}/{{ $item->slug }}">{{ $item->category->name }}</a>
+                                            </div>
+                                            <div class="time">{{ $item->updated_at->format('d/m/Y') }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article> --}}
+                            </article>
+                        @endforeach
                     </div>
                     <div class="line thin"></div>
                     <div class="comments">

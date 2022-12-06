@@ -17,9 +17,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php($i = 1)
                         @foreach ($users as $key => $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
@@ -32,7 +33,7 @@
                                 @if ($user->id != Auth::user()->id)
                                     <td>
                                         <a href="/admin/accounts/users/edit/{{ $user->id }}" class="btn btn-primary">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                     </td>
                                 @endif

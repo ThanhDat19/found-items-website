@@ -1,4 +1,3 @@
-
 <script src="/template/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/template/js/vendor/jquery.min.js" type="text/javascript"></script>
 <script src="/template/js/vendor/popper.min.js" type="text/javascript"></script>
@@ -10,18 +9,21 @@
 <script src="/template/front/js/jquery.migrate.js"></script>
 <script src="/template/front/scripts/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script>
+{{-- <script>
     var $target_end = $(".best-of-the-week");
-</script>
-<script src="/template/front/scripts/jquery-number/jquery.number.min.js"></script>
-<script src="/template/front/scripts/owlcarousel/dist/owl.carousel.min.js"></script>
-<script src="/template/front/scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-<script src="/template/front/scripts/easescroll/jquery.easeScroll.js"></script>
+</script> --}}
+{{-- <script src="/template/front/scripts/jquery-number/jquery.number.min.js"></script> --}}
+{{-- <script src="/template/front/scripts/owlcarousel/dist/owl.carousel.min.js"></script> --}}
+{{-- <script src="/template/front/scripts/magnific-popup/dist/jquery.magnific-popup.min.js"></script> --}}
+{{-- <script src="/template/front/scripts/easescroll/jquery.easeScroll.js"></script> --}}
 <script src="/template/front/scripts/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/template/front/scripts/icheck/icheck.min.js"></script>
 <script src="/template/front/scripts/toast/jquery.toast.min.js"></script>
 <script src="/template/front/js/demo.js"></script>
 {{-- <script src="/template/front/js/e-magz.js"></script> --}}
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> --}}
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="/template/admin/js/main.js"></script>
 <script>
     $(document).ready(function() {
@@ -30,6 +32,32 @@
             height: 200
         });
         $('.dropdown-toggle').dropdown();
+    });
+</script>
+<script>
+    $("input").iCheck({
+        checkboxClass: 'icheckbox_square-red',
+        radioClass: 'iradio_square-red',
+        cursor: true
+    });
+</script>
+<script>
+    $(function() {
+        var availableTags = [];
+        $.ajax({
+            type: "GET",
+            url: "/post-list",
+            success: function (response) {
+                startAutoComplete(response)
+            }
+        });
+
+        function startAutoComplete( availableTags ){
+            $("#search").autocomplete({
+            source: availableTags
+        });
+        }
+
     });
 </script>
 @yield('footer')

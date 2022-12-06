@@ -2,8 +2,14 @@
 <html lang="en">
 @include('layouts.head')
 
+
 <body>
-    @include('frontend.partials.nav')
+    {{-- Header --}}
+    <header class="primary" style="top: 0px;">
+        @include('frontend.partials.header')
+        @include('frontend.partials.nav')
+    </header>
+    {{-- Home --}}
     @yield('content')
     @include('frontend.partials.footer')
     @include('layouts.footer')

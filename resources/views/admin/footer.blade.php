@@ -5,7 +5,7 @@
 <!-- AdminLTE App -->
 {{-- <script src="/template/admin/dist/js/adminlte.min.js"></script>
 <script src="/template/admin/js/main.js"></script> --}}
-<script src="/template/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+{{-- <script src="/template/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> --}}
 <script src="/template/admin/js/main.js"></script>
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>

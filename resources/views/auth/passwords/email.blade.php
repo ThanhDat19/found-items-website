@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="home first" style="padding-top: 217px;">
+<section class="home first" style="padding-top: 100px;">
     <div class="container">
         <div class="row justify-content-center">
+            @include('admin.alert')
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Reset Password') }}</div>
+                    <div class="card-header">Quên mật khẩu</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -15,11 +16,11 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('password.email') }}">
+                        <form method="POST" action="/auth/forgot-password">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -35,7 +36,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Send Password Reset Link') }}
+                                        Gửi email
                                     </button>
                                 </div>
                             </div>

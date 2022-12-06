@@ -4,7 +4,7 @@
 @section('content')
 
 
-<section class="category first" style="padding-top: 180px;">
+<section class="category first" style="padding-top: 100px;">
     <div class="container">
       <div class="row">
         <div class="col-md-8 text-left">
@@ -76,7 +76,7 @@
               <div class="inner">
               <figure>
                   <a href="./{{ $post->category->slug }}/{{ $post->slug }}">
-                    <img src="{{ $post->image }}">
+                    <img src="{{ $post->image }}" style="width:100px; height:50px;object-fit: cover">
                 </a>
               </figure>
               <div class="padding">

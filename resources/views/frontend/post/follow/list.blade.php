@@ -16,12 +16,13 @@
                 </tr>
             </thead>
             <tbody>
+                @php($i = 1)
                 @foreach ($followPosts as $post)
                     <tr>
-                        <th scope="row">{{ $post->id }}</th>
+                        <th scope="row">{{ $i++ }}</th>
                         <td>{{ $post->post->name }}</td>
                         <td>{{ $post->post->user->name }}</td>
-                        <td>{{ $post->post->updated_at }}</td>
+                        <td>{{ $post->post->updated_at->format('d/m/Y') }}</td>
                         <td>
                             <a href="/posts/{{ $post->post->category->slug }}/{{ $post->post->slug }}" class="btn btn-primary">
                                 <i class="fas fa-eye"></i>

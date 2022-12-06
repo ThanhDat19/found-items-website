@@ -83,4 +83,52 @@ class AuthConTroller extends Controller
         //Đăng nhâp thất bại
         return redirect()->route('login')->with('error', 'Đăng nhập thất bại! Hãy kiểm tra lại mật khẩu của bạn!');
     }
+
+    public function postForgetPass(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|exists:users'
+        ], [
+            'email.required' => 'Vui lòng nhập địa chỉ email hợp lệ',
+            'email.exists' => 'Email này không tồn tại trong hệ thống'
+        ]);
+        try {
+            $token = strtoupper(Str::random(10));
+            $user = User::where('email', $request->email)->first();
+            $user->update(['token' => $token]);
+
+            Mail::send('admin.emails.forgot-password', compact('user'), function ($email) use ($user) {
+                $email->subject('Website Tìm Đồ Thất Lạc - Xác nhận tài khoản');
+                $email->to($user->email, $user->name);
+            });
+            return redirect()->back()->with('success', 'Vui lòng check mail để thực hiện thay đổi mật khẩu');
+        } catch (\Exception $error) {
+            return redirect()->back()->with('error', 'Gửi mail thất bại');
+        }
+
+    }
+
+    public function getPass(User $user, $token){
+        if($user->token == $token){
+            return view('auth.passwords.reset', ['user' => $user]);
+        }
+
+        return abort(404);
+    }
+
+    public function postGetPass(User $user, $token,Request $request){
+        $request->validate([
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password'
+        ],[
+            'password.required' => 'Mật khẩu không được để trống',
+            'password_confirmation.required' => 'Mật khẩu xác nhận không được để trống',
+            'password_confirmation.same' => 'Mật khẩu xác nhận không được để trống trùng khớp với mật khẩu vừa nhập',
+        ]);
+
+        $password_h = Hash::make($request->password);
+        $user->update(['password' => $password_h, 'token' => null ]);
+
+        return redirect()->route('login')->with('success', 'Thay đổi mật khẩu thành công bạn có thể đăng nhập');
+    }
 }

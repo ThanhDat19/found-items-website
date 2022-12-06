@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->mediumText('description');
             $table->mediumText('content');
-            $table->integer('active')->default('1');
+            $table->integer('active')->default('0');
             $table->string('image');
             $table->timestamps();
         });

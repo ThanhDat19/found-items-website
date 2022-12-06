@@ -1,7 +1,7 @@
 @extends('frontend.index')
 
 @section('content')
-    <section class="home first" style="padding-top: 217px;">
+    <section class="home first" style="padding-top: 100px;">
         @include('admin.alert')
         <div class="container">
             <div class="row">
@@ -36,15 +36,18 @@
                                                 <footer>
 
                                                     {{-- Follow --}}
-                                                    @if(Auth::check())
-                                                        @if(!$items->followByUser(Auth::user()->id, $items->id))
-                                                        <a href="#"class="love active"><i class="ion-android-favorite"></i>
-                                                            <div>{{ $items->sumFollowPostByPost($items->id) }}</div>
-                                                        </a>
+                                                    @if (Auth::check())
+                                                        @if (!$items->followByUser(Auth::user()->id, $items->id))
+                                                            <a href="#"class="love active"><i
+                                                                    class="ion-android-favorite"></i>
+                                                                <div>{{ $items->sumFollowPostByPost($items->id) }}</div>
+                                                            </a>
                                                         @else
-                                                        <a href="#" onclick="followPost({{ Auth::user()->id }} ,{{ $items->id }},'/posts/follow')" class="love"><i class="ion-android-favorite-outline"></i>
-                                                            <div>{{ $items->sumFollowPostByPost($items->id) }}</div>
-                                                        </a>
+                                                            <a href="#"
+                                                                onclick="followPost({{ Auth::user()->id }} ,{{ $items->id }},'/posts/follow')"
+                                                                class="love"><i class="ion-android-favorite-outline"></i>
+                                                                <div>{{ $items->sumFollowPostByPost($items->id) }}</div>
+                                                            </a>
                                                         @endif
                                                     @endif
 
@@ -66,43 +69,8 @@
                             {{ $latest_posts->links() }}
                         </div>
                     </div>
-                    <div class="line top">
-                        <div>Tin Tức Khác</div>
-                    </div>
-                    <div class="row">
-                        <article class="col-md-12 article-list">
-                            <div class="inner">
-                                <figure>
-                                    <a href="single.html">
-                                        <img src="images/news/img11.jpg" alt="Sample Article">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <div class="detail">
-                                        <div class="category">
-                                            <a href="#">Film</a>
-                                        </div>
-                                        <div class="time">December 19, 2016</div>
-                                    </div>
-                                    <h1><a href="single.html">Donec consequat arcu at ultrices sodales quam erat aliquet
-                                            diam</a></h1>
-                                    <p>
-                                        Donec consequat, arcu at ultrices sodales, quam erat aliquet diam, sit amet interdum
-                                        libero nunc accumsan nisi.
-                                    </p>
-                                    <footer>
-                                        <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                            <div>273</div>
-                                        </a>
-                                        <a class="btn btn-primary more" href="single.html">
-                                            <div>More</div>
-                                            <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                        </a>
-                                    </footer>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+
+
                 </div>
                 <div class="col-xs-6 col-md-4 sidebar" id="sidebar">
                     <div class="sidebar-title for-tablet">Sidebar</div>
@@ -141,16 +109,13 @@
                                                     </a>
                                                 </div>
                                                 <div class="item">
-                                                    <a href="#">
+                                                    <a href="/author/{{ $findUser->id }}">
                                                         <div class="icon">
                                                             <div>Xem thêm</div>
                                                             <i class="ion-chevron-right"></i>
                                                         </div>
                                                     </a>
                                                 </div>
-                                            </div>
-                                            <div class="featured-author-footer">
-                                                <a href="#">Xem chi tiết</a>
                                             </div>
                                         </div>
                                     </div>
@@ -162,18 +127,20 @@
                     <aside>
                         <h1 class="aside-title">Tin Nổi Bật</h1>
                         <div class="aside-body">
+                            @foreach ($postsHot as $post)
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="single.html">
-                                            <img src="images/news/img07.jpg" alt="Sample Article">
+                                        <a href="/posts/{{ $post->category->slug }}/{{ $post->slug }}">
+                                            <img src="{{ $post->image }}" style="width:100px; height:50px;object-fit: cover" alt="">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                                        <h1><a href="/posts/{{ $post->category->slug }}/{{ $post->slug }}">{{ $post->description }}</a></h1>
                                     </div>
                                 </div>
                             </article>
+                            @endforeach
                         </div>
                     </aside>
                 </div>

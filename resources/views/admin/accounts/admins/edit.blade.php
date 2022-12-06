@@ -18,21 +18,19 @@
                 <option value="0"{{$user->role == 0?'selected': ''}}>User</option>
             </select>
         </div>
-        <form action="{{url('admin/accounts/admins/edit/' . $user->id)}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-                <label for="user">Tên thành viên</label>
-                <input type="text" name="name" class="form-control" value="{{ $user->name }}"/>
-            </div>
-            <div class="mb-3">
-                <label for="user">SĐT</label>
-                <input type="text" name="phone" class="form-control" value="{{ $user->phone }}"/>
-            </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Cập nhật</button>
-                <a href="{{ url('admin/accounts/admins/list') }}" class="btn btn-danger ">Trở Về</a>
-            </div>
-        </form>
+
+        <div class="mb-3">
+            <label for="user">Tên thành viên</label>
+            <p class="form-control">{{ $user->name }}</p>
+        </div>
+
+        <div class="mb-3">
+            <label for="user">SĐT</label>
+            <p class="form-control">{{ $user->phone }}</p>
+        </div>
+        <div class="card-footer">
+            <a href="{{ url('admin/accounts/admins/list') }}" class="btn btn-danger ">Trở Về</a>
+        </div>
     </div>
     <!-- /.card-body -->
 @endsection

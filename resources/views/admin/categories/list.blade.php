@@ -17,9 +17,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php($i = 1)
                         @foreach ($categories as $category)
                             <tr>
-                                <td>{{ $category->id }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>
                                     @if ($category->active == 0)
@@ -28,7 +29,12 @@
                                         <span class="btn btn-success btn-xs">YES</span>
                                     @endif
                                 </td>
-                                <td> {{ $category->updated_at }}</td>
+                                <td>
+                                    @if($category->updated_at == NULL)
+                                    <span class="text-danger">Chưa đặt thời gian</span>
+                                    @endif
+                                    {{ $category->updated_at->diffForHumans() }}
+                                </td>
                                 <td>
                                     <a href="/admin/categories/edit/{{ $category->id }}" class="btn btn-primary">
                                         <i class="fas fa-edit"></i>

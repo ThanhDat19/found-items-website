@@ -9,7 +9,9 @@ use App\Http\Requests\User\UserRequest;
 use App\Http\Services\User\UserService;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
 {
@@ -35,7 +37,7 @@ class UserController extends Controller
     public function showAdmins(User $user)
     {
         return view('admin.accounts.admins.edit', [
-            'title' => 'Chỉnh Sửa Admin',
+            'title' => 'Xem Tài Khoản Admin',
             'user' => $user,
         ]);
     }
@@ -114,5 +116,55 @@ class UserController extends Controller
             \Log::info($err->getMessage());
             return redirect()->back();
         }
+    }
+
+    public function createAdmins(){
+        return view('admin.accounts.admins.add', ['title' => 'Thêm Mới Tài Khoản Admin']);
+    }
+
+    public function storeAdmins(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'password_confirm' => 'required|same:password'
+        ]);
+        try {
+            $user = User::where('email', $request->email)->first();
+        if(!empty($user)){
+            return redirect()->back()->with('error', 'Email đã được tạo tài khoản! Vui lòng chọn email khác');
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => '1',
+            'password' =>Hash::make($request->password),
+        ]);
+        return redirect('admin/accounts/admins/list')->with('success', 'Tạo tài khoản thành công');
+        } catch (\Exception $error) {
+            return redirect('admin/accounts/admins/list')->with('error', 'Tạo tài thất bại');
+        }
+    }
+
+    public function deleteAdmins(Request $request){
+        $id = $request->id;
+        $user = User::find($id);
+        $result = true;
+        if ($user) {
+            $user->delete();
+        }
+        else{
+            $result = false;
+        }
+        if ($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công tài khoản'
+            ]);
+        }
+        return response()->json([
+            'error' => true,
+        ]);
     }
 }

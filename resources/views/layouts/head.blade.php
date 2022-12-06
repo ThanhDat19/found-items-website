@@ -5,7 +5,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ !empty($title) ? $title : 'laravel' }}</title>
+    <title>{{ !empty($title) ? $title : 'Tìm Đồ KDV' }}</title>
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logo/favicon.svg') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logo/favicon.png') }}" type="image/png" />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,24 +28,28 @@
     <!-- Toast -->
     <link rel="stylesheet" href="/template/front/scripts/toast/jquery.toast.min.css">
     <!-- OwlCarousel -->
-    <link rel="stylesheet" href="/template/front/scripts/owlcarousel/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/template/front/scripts/owlcarousel/dist/assets/owl.theme.default.min.css">
+    {{-- <link rel="stylesheet" href="/template/front/scripts/owlcarousel/dist/assets/owl.carousel.min.css"> --}}
+    {{-- <link rel="stylesheet" href="/template/front/scripts/owlcarousel/dist/assets/owl.theme.default.min.css"> --}}
     <!-- Magnific Popup -->
-    <link rel="stylesheet" href="/template/front/scripts/magnific-popup/dist/magnific-popup.css">
+    {{-- <link rel="stylesheet" href="/template/front/scripts/magnific-popup/dist/magnific-popup.css"> --}}
     <link rel="stylesheet" href="/template/front/scripts/sweetalert/dist/sweetalert.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/template/front/scripts/icheck/skins/all.css">
     <!-- Custom style -->
     <link rel="stylesheet" href="/template/front/css/style.css">
     <link rel="stylesheet" href="/template/front/css/skins/all.css">
     <link rel="stylesheet" href="/template/front/css/demo.css">
 
+
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <style>
-        *{
+        * {
             font-family: 'Roboto', sans-serif;
         }
-        h1{
+
+        h1 {
             font-family: 'Roboto', sans-serif;
         }
     </style>

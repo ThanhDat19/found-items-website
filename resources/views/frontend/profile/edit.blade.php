@@ -61,13 +61,10 @@
                         <span>Chức năng</span>
                     </div><br>
                     <div class="col-md-12 mt-2">
-                        <a href="#" class="btn btn-primary">Đổi mật khẩu</a>
+                        <a href="/profile/posts/add" class="btn btn-primary" style="width:100%">Đăng bài</a>
                     </div>
                     <div class="col-md-12 mt-2">
-                        <a href="/profile/posts/add" class="btn btn-primary">Bài đăng</a>
-                    </div>
-                    <div class="col-md-12 mt-2">
-                        <a href="/profile/posts/follow/{{ Auth::user()->id }}" class="btn btn-primary">Bài đăng đang theo dõi</a>
+                        <a href="/profile/posts/follow/{{ Auth::user()->id }}" class="btn btn-primary" style="width:100%">Bài đăng đang theo dõi</a>
                     </div>
                 </div>
             </div>
