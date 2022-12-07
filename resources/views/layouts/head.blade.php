@@ -52,6 +52,9 @@
         h1 {
             font-family: 'Roboto', sans-serif;
         }
+        .dataTables_length{
+            display: none;
+        }
     </style>
     @yield('head')
 </head>

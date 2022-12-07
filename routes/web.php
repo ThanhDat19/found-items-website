@@ -31,6 +31,10 @@ Route::get('/home', [FrontendController::class, 'index'])->name('home');
 Route::get('/posts/{category_slug}', [FrontendController::class, 'viewCategoryPost']);
 Route::get('/posts/{category_slug}/{post_slug}', [FrontendController::class, 'viewPost']);
 Route::get('/posts/report/{category_slug}/{post_slug}/{post}', [FrontendController::class, 'report'])->name('report');
+Route::get('/posts-list/{id}', [FrontendController::class, 'postList'])->name('posts-list');
+Route::delete('/posts-list/destroy', [FrontendController::class, 'postDestroy']);
+Route::get('/posts-list/edit/{id}', [FrontendController::class, 'postEdit']);
+Route::post('/posts-list/edit/{id}', [FrontendController::class, 'postUpdate']);
 Route::post('/posts/report/{category_slug}/{post_slug}/{post}', [FrontendController::class, 'reportPost'])->name('reportPost');
 
 #Author

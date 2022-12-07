@@ -3,16 +3,24 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Post\PostService;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostFollow;
 use App\Models\Report;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class FrontendController extends Controller
 {
+    protected $postService;
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
     public function index()
     {
         $users = User::where('role', '0')->get();
@@ -118,5 +126,62 @@ class FrontendController extends Controller
         ]);
 
         return $this->viewPost($category_slug, $post_slug);
+    }
+
+    public function postList($id){
+        $user = User::find($id);
+        return view('frontend.post.list', ['posts' =>$user->posts]);
+    }
+
+    public function postDestroy(Request $request){
+        $id = $request->id;
+        $post = Post::find($id);
+        $result = true;
+        if ($post) {
+            $post->delete();
+        }
+        else{
+            $result = false;
+        }
+        if ($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa bài viết thành công'
+            ]);
+        }
+        return response()->json([
+            'error' => true,
+        ]);
+    }
+
+    public function postEdit($id){
+        $post = Post::find($id);
+        return view('frontend.post.edit', ['post' => $post, 'categories' => $this->postService->getCategory()]);
+    }
+
+    public function postUpdate(Request $request, $id){
+        // dd($request->input());
+        $post = Post::find($id);
+        try {
+            $post->fill([
+                "name" => $request->input('name'),
+                "category_id" => $request->input('category_id'),
+                "description" => $request->input('description'),
+                "content" => $request->input('content'),
+                "image" => $request->input('image'),
+                "slug" => Str::slug($request->input('name'), '-')
+            ]);
+
+            if(!empty($request->active)){
+                $post->active = $request->active;
+            }
+            $post->save();
+            Session::flash('success', 'Cập nhật thành công');
+            return redirect()->route('posts-list', ['id' => Auth::user()->id]);
+        } catch (\Exception $err) {
+            Session::flash('error', 'Có lỗi vui lòng thử lại');
+            \Log::info($err->getMessage());
+            return redirect()->back();
+        }
     }
 }

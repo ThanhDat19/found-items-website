@@ -5,7 +5,7 @@
 <section class="home first" style="padding-top: 150px;">
 
     <div class="container rounded bg-white mt-5 mb-5">
-        <table class="table">
+        <table class="table" id="myTable">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>

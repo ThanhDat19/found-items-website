@@ -24,6 +24,7 @@
 {{-- <script src="/template/front/js/e-magz.js"></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> --}}
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="/template/admin/js/main.js"></script>
 <script>
     $(document).ready(function() {
@@ -32,6 +33,10 @@
             height: 200
         });
         $('.dropdown-toggle').dropdown();
+    });
+
+    $(document).ready(function() {
+        $('#myTable').DataTable();
     });
 </script>
 <script>

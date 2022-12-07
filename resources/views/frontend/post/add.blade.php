@@ -1,6 +1,5 @@
 @extends('frontend.post.partials.main')
 @section('head')
-    <script src="/ckeditor/ckeditor.js"></script>
 @endsection
 @section('content')
     <section class="category first" style="padding-top: 100px;">
