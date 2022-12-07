@@ -45,8 +45,10 @@
                             <div class="col-md-12"><label class="labels">Số điện thoại:</label><input type="text"
                                     name="phone" value="{{ Auth::user()->phone }}" class="form-control"
                                     placeholder="Số điện thoại"></div>
-                            <div class="col-md-12"><label class="labels">Email:</label><input type="text" name="email"
-                                    value="{{ Auth::user()->email }}" class="form-control" placeholder="Email"></div>
+                                    <div class="col-md-12">
+                                        <label for="user">Email</label>
+                                        <p class="form-control">{{ Auth::user()->email }}</p>
+                                    </div>
                         </div>
                         <div class="mt-5 text-center">
                             <button type="submit" class="btn btn-primary profile-button" type="button">Lưu thay

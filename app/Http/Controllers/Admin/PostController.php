@@ -10,6 +10,7 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PostFollow;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Laravel\Ui\Presets\React;
@@ -169,5 +170,29 @@ class PostController extends Controller
     public function viewPost(Post $post)
     {
         return view('admin.posts.view', ['post' => $post, 'title' => 'Xem Bài Đăng',]);
+    }
+
+    public function reportList(Post $post){
+        $reportList = $post->report;
+        return view('admin.posts.list-report', ['title' => 'Xem Danh Sách Báo Cáo', 'posts' => $reportList ]);
+    }
+
+
+    public function destroyReport(Request $request)
+    {
+        try {
+            $result = $this->postService->destroyReport($request);
+            if ($result) {
+                return response()->json([
+                    'error' => false,
+                    'message' => 'Xóa bài tố cáo thành công'
+                ]);
+            }
+        } catch (\Exception $error) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Đã có lỗi xảy ra'
+            ]);
+        }
     }
 }

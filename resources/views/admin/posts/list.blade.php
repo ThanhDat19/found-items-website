@@ -52,7 +52,7 @@
                                 @else
                                     <span class="btn btn-success btn-xs">YES</span>
                                 @endif
-                                <span class="btn btn-warning btn-xs">{{ $post->report->count() }}</span>
+                                <a href="{{ route('report-list', ['post' => $post->id]) }}" class="btn btn-warning btn-xs">{{ $post->report->count() }}</a>
                             </td>
                             <td>
                                 @if($post->updated_at == NULL)

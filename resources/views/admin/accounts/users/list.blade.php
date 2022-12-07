@@ -35,6 +35,11 @@
                                         <a href="/admin/accounts/users/edit/{{ $user->id }}" class="btn btn-primary">
                                             <i class="fas fa-eye"></i>
                                         </a>
+                                        <a href="#"
+                                        onclick="removeRow({{ $user->id }},'/admin/accounts/admins/delete')"
+                                        class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
                                     </td>
                                 @endif
                             </tr>

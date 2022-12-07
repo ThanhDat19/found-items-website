@@ -92,7 +92,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
             Route::post('edit/{post}', [PostController::class, 'update']);
             Route::post('allow', [PostController::class, 'allow']);
             Route::delete('destroy', [PostController::class, 'destroy']);
+            Route::delete('/report/destroy', [PostController::class, 'destroyReport']);
             Route::get('view/{post}', [PostController::class, 'viewPost']);
+            Route::get('view/list-report/{post}', [PostController::class, 'reportList'])->name('report-list');
         });
 
         #Accounts

@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostFollow;
+use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -82,6 +83,16 @@ class PostService
 
         if ($post) {
             $post->delete();
+            return true;
+        }
+        return false;
+    }
+
+    public function destroyReport($request){
+        $report = Report::where('id', $request->input('id'))->first();
+
+        if ($report) {
+            $report->delete();
             return true;
         }
         return false;

@@ -2130,6 +2130,7 @@ section .container {
   border: 1px solid #ddd;
   font-size: 14px;
   color: #989898;
+  display: none;
 }
 .newsletter .icon {
   text-align: center;

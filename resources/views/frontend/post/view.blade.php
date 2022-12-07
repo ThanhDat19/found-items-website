@@ -32,19 +32,12 @@
                     </aside>
                     <aside>
                         <div class="aside-body">
-                            <form class="newsletter">
-                                <div class="icon">
-                                    <i class="ion-ios-email-outline"></i>
-                                    <h1>Newsletter</h1>
+                            <div class="card" style="width: 25rem;">
+                                <img src="https://codestar.vn/wp-content/uploads/2015/06/laravel.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">WEBSITE tìm đồ KDV là nơi giúp cho mọi người dễ dàng tìm được những món đồ mà bản thân đánh rơi hay thất lạc.</p>
                                 </div>
-                                <div class="input-group">
-                                    <input type="email" class="form-control email" placeholder="Your mail">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
-                                    </div>
-                                </div>
-                                <p>By subscribing you will receive new articles in your email.</p>
-                            </form>
+                              </div>
                         </div>
                     </aside>
                 </div>
@@ -193,7 +186,7 @@
                                                     <footer>
                                                         <a href="#"
                                                             onclick="removeRow({{ $item->id }},'{{ $post->slug }}/comments/destroy')"
-                                                            class="btn btn-danger btn-sm me-2">Delete
+                                                            class="btn btn-danger btn-sm me-2">xóa bình luận
                                                         </a>
                                                     </footer>
                                                 @endif

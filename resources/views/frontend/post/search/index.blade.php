@@ -33,7 +33,7 @@
                                 @php
                                     $checked = [];
                                     if(isset($_GET['category'])){
-                                        $cheked = $_GET['category'];
+                                        $checked = $_GET['category'];
                                     }
                                 @endphp
                                     <div class="form-group">

@@ -79,8 +79,7 @@
                             @if (!empty($findUser))
                                 <div class="featured-author">
                                     <div class="featured-author-inner">
-                                        <div class="featured-author-cover"
-                                            style="background-image: url('images/news/img15.jpg');">
+                                        <div class="featured-author-cover">
                                             <div class="badges">
                                                 <div class="badge-item"><i class="ion-star"></i> Tác giả tiêu biểu</div>
                                             </div>
@@ -128,18 +127,21 @@
                         <h1 class="aside-title">Tin Nổi Bật</h1>
                         <div class="aside-body">
                             @foreach ($postsHot as $post)
-                            <article class="article-mini">
-                                <div class="inner">
-                                    <figure>
-                                        <a href="/posts/{{ $post->category->slug }}/{{ $post->slug }}">
-                                            <img src="{{ $post->image }}" style="width:100px; height:50px;object-fit: cover" alt="">
-                                        </a>
-                                    </figure>
-                                    <div class="padding">
-                                        <h1><a href="/posts/{{ $post->category->slug }}/{{ $post->slug }}">{{ $post->description }}</a></h1>
+                                <article class="article-mini">
+                                    <div class="inner">
+                                        <figure>
+                                            <a href="/posts/{{ $post->category->slug }}/{{ $post->slug }}">
+                                                <img src="{{ $post->image }}"
+                                                    style="width:100px; height:50px;object-fit: cover" alt="">
+                                            </a>
+                                        </figure>
+                                        <div class="padding">
+                                            <h1><a
+                                                    href="/posts/{{ $post->category->slug }}/{{ $post->slug }}">{{ $post->description }}</a>
+                                            </h1>
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
+                                </article>
                             @endforeach
                         </div>
                     </aside>
