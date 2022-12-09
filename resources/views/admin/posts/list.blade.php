@@ -65,13 +65,12 @@
                                     {{ $post->updated_at->diffForHumans() }}
                                 </td>
                                 <td>
-                                    {{-- <a href="/admin/posts/edit/{{ $post->id }}" class="btn btn-primary">
-                                    <i class="fas fa-edit"></i>
-                                </a> --}}
-                                    <a href="#" onclick="allowPost({{ $post->id }},'/admin/posts/allow')"
-                                        class="btn btn-primary">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
+                                    @if ($post->active == 0)
+                                        <a href="#" onclick="allowPost({{ $post->id }},'/admin/posts/allow')"
+                                            class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    @endif
                                     <a href="/admin/posts/view/{{ $post->id }}" class="btn btn-primary">
                                         <i class="fas fa-eye"></i>
                                     </a>

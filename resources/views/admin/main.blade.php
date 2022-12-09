@@ -23,6 +23,9 @@
             border-radius: 5px !important;
             margin-left: 8px;
         }
+        .dataTables_length{
+            display: none;
+        }
     </style>
 </head>
 

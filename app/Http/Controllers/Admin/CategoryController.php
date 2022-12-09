@@ -40,7 +40,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return view('admin.categories.edit', [
-            'title' => 'Chỉnh Sửa Loại Bài Đăng' . $category->name,
+            'title' => 'Chỉnh Sửa Loại Bài Đăng ' . $category->name,
             'category' => $category,
         ]);
     }

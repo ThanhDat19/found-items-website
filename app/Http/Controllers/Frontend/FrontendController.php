@@ -37,7 +37,10 @@ class FrontendController extends Controller
             'active' => '1',
         ])->orderByDesc('created_at')->paginate(4);
         if ($findUser != null) {
-            $posts = Post::where('author', $findUser->id)->get(); // các bài đã đăng
+            $posts = Post::where([
+                'author'=> $findUser->id,
+                'active' => 1
+            ])->get(); // các bài đã đăng
             $sum = 0;
             foreach ($posts as $post) {
                 $sum += $post->sumFollowPostByPost($post->id);
@@ -94,28 +97,34 @@ class FrontendController extends Controller
                 'category_id' => $category->id,
                 'slug' => $post_slug,
                 'active' => '1',
-
             ])->first();
-            $followPost = PostFollow::where('post_id', $post->id)->get();
-            return view('frontend.post.view', [
-                'follow' => $followPost,
-                'post' => $post,
-                'category' => $category
-            ]);
+            if ($post) {
+                $followPost = PostFollow::where('post_id', $post->id)->get();
+                return view('frontend.post.view', [
+                    'follow' => $followPost,
+                    'post' => $post,
+                    'category' => $category
+                ]);
+            }
+            else{
+                return redirect('/');
+            }
         } else {
             return redirect('/');
         }
     }
 
-    public function report($category_slug, $post_slug, $post_id){
+    public function report($category_slug, $post_slug, $post_id)
+    {
         $post = Post::find($post_id);
         return view('frontend.post.report.index', ['post' => $post]);
     }
 
-    public function reportPost($category_slug, $post_slug, $post_id, Request $request){
+    public function reportPost($category_slug, $post_slug, $post_id, Request $request)
+    {
         $request->validate([
             'description' => 'required'
-        ],[
+        ], [
             'description.required' => 'Nội dung không được để trống'
         ]);
         $post = Post::find($post_id);
@@ -124,23 +133,29 @@ class FrontendController extends Controller
             'post_id' => $post->id,
             'description' => $request->description
         ]);
-
+        Session::flash('success', 'Tố cáo thành công');
         return $this->viewPost($category_slug, $post_slug);
     }
 
-    public function postList($id){
+    public function postList($id)
+    {
         $user = User::find($id);
-        return view('frontend.post.list', ['posts' =>$user->posts]);
+        return view('frontend.post.list', ['posts' => $user->posts]);
     }
 
-    public function postDestroy(Request $request){
+    public function postDestroy(Request $request)
+    {
         $id = $request->id;
         $post = Post::find($id);
         $result = true;
         if ($post) {
+            $post->follow()->delete();
+            $post->report()->delete();
+            PostFollow::where('post_id', $post->id)->delete();
+            Report::where('post_id', $post->id)->delete();
             $post->delete();
-        }
-        else{
+
+        } else {
             $result = false;
         }
         if ($result) {
@@ -154,12 +169,14 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function postEdit($id){
+    public function postEdit($id)
+    {
         $post = Post::find($id);
         return view('frontend.post.edit', ['post' => $post, 'categories' => $this->postService->getCategory()]);
     }
 
-    public function postUpdate(Request $request, $id){
+    public function postUpdate(Request $request, $id)
+    {
         // dd($request->input());
         $post = Post::find($id);
         try {
@@ -172,7 +189,7 @@ class FrontendController extends Controller
                 "slug" => Str::slug($request->input('name'), '-')
             ]);
 
-            if(!empty($request->active)){
+            if (!empty($request->active)) {
                 $post->active = $request->active;
             }
             $post->save();

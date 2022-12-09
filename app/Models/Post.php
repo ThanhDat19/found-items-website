@@ -35,7 +35,7 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author', 'id');
     }
     public function follow(){
-        return $this->belongsTo(PostFollow::class, 'id', 'post_id');
+        return $this->hasMany(PostFollow::class, 'post_id', 'id');
     }
 
     public function sumFollowPostByPost($id){

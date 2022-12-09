@@ -13,7 +13,7 @@
                                 <th>Tên bài đăng</th>
                                 <th>Hình ảnh</th>
                                 <th>Loại bài đăng</th>
-                                <th>Trạng thái</th>
+                                <th>Trạng thái | Tố cáo</th>
                                 <th>Cập nhật</th>
                                 <th style="...">&nbsp;</th>
                             </tr>
@@ -36,6 +36,8 @@
                                         @elseif($post->active == 2)
                                             <span class="btn btn-success btn-xs">FOUND</span>
                                         @endif
+                                        <a href="#"
+                                            class="btn btn-warning btn-xs">{{ $post->report->count() }}</a>
                                     </td>
                                     <td>
                                         @if ($post->updated_at == null)

@@ -44,7 +44,7 @@ class UserController extends Controller
     public function showUser(User $user)
     {
         return view('admin.accounts.users.edit', [
-            'title' => 'Chỉnh Sửa Thành Viên',
+            'title' => 'Xem Tài Khoản Thành Viên',
             'user' => $user,
         ]);
     }

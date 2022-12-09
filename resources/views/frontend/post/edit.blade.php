@@ -46,6 +46,7 @@
                         <input type="hidden" name="image" id="image" value="{{ $post->image }}">
                     </div>
                     <!-- /.card-body -->
+                    @if($post->active != 2 && $post->active != 0)
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input class="custom-control-input" type="checkbox" name="active" value="2"
@@ -53,6 +54,7 @@
                             <label class="custom-control-label">Đã tìm thấy</label>
                         </div>
                     </div>
+                    @endif
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Cập nhật bài đăng</button>
                     </div>
