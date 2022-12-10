@@ -44,15 +44,18 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
         * {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto', sans-serif !important;
         }
 
         h1 {
             font-family: 'Roboto', sans-serif;
         }
-        .dataTables_length{
+
+        .dataTables_length {
             display: none;
         }
     </style>
