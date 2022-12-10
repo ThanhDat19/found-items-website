@@ -1,11 +1,11 @@
 ### Đồ án Website tìm đồ thất lạc
 ---
-####1.  Giới thiệu thành viên:
+#### 1.  Giới thiệu thành viên:
 > Nguyễn Thành Đạt (nhóm trưởng)
 > Lại Minh Kiệt
 > Nguyễn Tường Vy
 ---
-####2. Giới thiệu dự án:
+#### 2. Giới thiệu dự án:
  Như mọi người đã biết, nhu cầu đi lại, giao thông là việc cần thiết và thiết yếu nhất đối với mỗi người. Song bên cạnh việc đi lại còn có những nhu cầu liên quan khác phát sinh. Ví dụ như việc sửa chữa, rơi mất đồ hay bị cướp giật. Từ xưa đến nay, việc rơi mất đồ hay bị cướp giật là việc đáng quan ngại mà ai cũng không mong muốn nó xảy ra, vì các loại giấy tờ tuỳ thân liên quan sẽ rất khó làm lại mỗi khi bị rơi rớt hay thất lạc dọc đường. Vì vậy, website ***tìm đồ thất lạc*** ra đời với sứ mệnh tìm kiếm lại giấy tờ bị đánh rơi, thất lạc.
 
 ---
@@ -15,7 +15,7 @@
 - **Giao diện quản trị**
 ![example](admin.png)
 ---
-####3. Phân chia công việc:
+#### 3. Phân chia công việc:
 | STT   | Chức năng | Thành viên | Tiến độ | Trạng thái |
 | :---: | :-------: | :--------: | :-----: | :--------: |
 | 1 | Đăng nhập | Nguyễn Tường Vy | 60% | Hoàn thành |
@@ -41,7 +41,7 @@
 | 21 | Đăng bài | Nguyễn Thành Đạt | 100% | Hoàn thành |
 | 22 | Phân tích dự án | Nguyễn Thành Đạt | 100% | Hoàn thành |
 ---
-####4. Cài đặt dự án:
+#### 4. Cài đặt dự án:
 1. Clone dự án về máy 
 2. Download file cơ sở dữ liệu [get link](https://drive.google.com/file/d/1xjawvBNofx_KbCEa-sJmgzeP3rZINoh5/view?usp=share_link)
 3. Chạy truy vấn mysql với file vừa download
