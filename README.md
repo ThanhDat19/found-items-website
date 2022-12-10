@@ -1,9 +1,9 @@
 ### Đồ án Website tìm đồ thất lạc
 ---
 #### 1.  Giới thiệu thành viên:
-> Nguyễn Thành Đạt (nhóm trưởng)
-> Lại Minh Kiệt
-> Nguyễn Tường Vy
+- Nguyễn Thành Đạt (nhóm trưởng)
+- Lại Minh Kiệt
+- Nguyễn Tường Vy
 ---
 #### 2. Giới thiệu dự án:
  Như mọi người đã biết, nhu cầu đi lại, giao thông là việc cần thiết và thiết yếu nhất đối với mỗi người. Song bên cạnh việc đi lại còn có những nhu cầu liên quan khác phát sinh. Ví dụ như việc sửa chữa, rơi mất đồ hay bị cướp giật. Từ xưa đến nay, việc rơi mất đồ hay bị cướp giật là việc đáng quan ngại mà ai cũng không mong muốn nó xảy ra, vì các loại giấy tờ tuỳ thân liên quan sẽ rất khó làm lại mỗi khi bị rơi rớt hay thất lạc dọc đường. Vì vậy, website ***tìm đồ thất lạc*** ra đời với sứ mệnh tìm kiếm lại giấy tờ bị đánh rơi, thất lạc.
