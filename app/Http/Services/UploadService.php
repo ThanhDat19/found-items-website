@@ -7,9 +7,6 @@ class UploadService
 {
     public function store($request)
     {
-        // $request->validate([
-        //     'image_validate' => 'nullable|max:10240|image|mimes:jpeg,jpg,png'
-        // ]);
         if ($request->hasFile('file')) {
 
             try {

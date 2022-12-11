@@ -170,7 +170,7 @@
                                 <div class="item">
                                     <div class="user">
                                         <figure>
-                                            <img src=" {!! $item->user->avatar !!}">
+                                            <img src="{!! $item->user->avatar !!}">
                                         </figure>
                                         <div class="details">
                                             <h5 class="name">{!! $item->user->name !!}</h5>
@@ -196,9 +196,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
-
-
                         </div>
                     </div>
                 </div>

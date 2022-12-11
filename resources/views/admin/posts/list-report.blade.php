@@ -25,7 +25,7 @@
                                 <td>{{ $post->user->name }}</td>
                                 <td>
 
-                                    {{ $post->description }}
+                                    {{  $post->showDetail() }}
 
                                 </td>
                                 <td>

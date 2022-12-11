@@ -22,5 +22,7 @@ class Report extends Model
     public function post(){
         return $this->belongsTo(Post::class);
     }
-
+    public function showDetail(){
+        echo $this->description;
+    }
 }
