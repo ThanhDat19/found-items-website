@@ -29,17 +29,18 @@
 | 9 | Quản lý bài đăng | Lại Minh Kiệt | 100%| Hoàn thành |
 | 10 | Quản lý tố cáo | Lại Minh Kiệt | 100%| Hoàn thành |
 | 11 | Viết báo cáo | Lại Minh Kiệt | 30% / 100% | Hoàn thành |
-| 12 | Quản lý bài đăng (Thành viên) | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 13 | Theo dõi bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 14 | Quản lý bài đăng theo dõi | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 15 | Đăng nhập | Nguyễn Thành Đạt | 40% | Hoàn thành |
-| 16 | Đăng ký | Nguyễn Thành Đạt | 50% | Hoàn thành |
-| 17 | Tìm kiếm bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 18 | Tìm kiếm theo vị trí | Nguyễn Thành Đạt | 0% | Chưa hoàn thành |
-| 19 | Tố cáo bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 20 | Các chức năng xem bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 21 | Đăng bài | Nguyễn Thành Đạt | 100% | Hoàn thành |
-| 22 | Phân tích dự án | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 12 | Bình luận | Lại Minh Kiệt | 100% | Hoàn thành |
+| 13 | Quản lý bài đăng (Thành viên) | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 14 | Theo dõi bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 15 | Quản lý bài đăng theo dõi | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 16 | Đăng nhập | Nguyễn Thành Đạt | 40% | Hoàn thành |
+| 17 | Đăng ký | Nguyễn Thành Đạt | 50% | Hoàn thành |
+| 18 | Tìm kiếm bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 19 | Tìm kiếm theo vị trí | Nguyễn Thành Đạt | 0% | Chưa hoàn thành |
+| 20 | Tố cáo bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 21 | Các chức năng xem bài đăng | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 22 | Đăng bài | Nguyễn Thành Đạt | 100% | Hoàn thành |
+| 23 | Phân tích dự án | Nguyễn Thành Đạt | 100% | Hoàn thành |
 ---
 #### 4. Cài đặt dự án:
 1. Clone dự án về máy 
