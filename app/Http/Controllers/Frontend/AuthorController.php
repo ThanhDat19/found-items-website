@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
-    public function index( $id )
+    public function index($id)
     {
         $user = User::find($id);
-        return view('frontend.author.index', ['user' => $user, 'posts' =>$user->posts]);
+        $posts = $user->posts->where('active', 1);
+        return view('frontend.author.index', ['user' => $user, 'posts' => $posts]);
     }
 }
